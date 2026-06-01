@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carriage — Support for Caregivers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF7F0;
+    --bark: #1C1917;
+    --bark-mid: #3D2E26;
+    --bark-light: #6B5040;
+    --sage: #2E7D6B;
+    --sage-light: #7BBFB3;
+    --sage-pale: #D4EDE8;
+    --terracotta: #C17B4E;
+    --terracotta-pale: #F5E4D4;
+    --amber: #E8C547;
+    --amber-pale: #FBF4C8;
+    --violet: #6B5EA8;
+    --violet-pale: #EAE8F5;
+    --sand: #C8BAA0;
+    --sand-pale: #EDE5D4;
+    --text-primary: #1C1917;
+    --text-secondary: #4A3830;
+    --text-muted: #8C7060;
+    --font-display: 'Raleway', system-ui, sans-serif;
+    --font-body: 'Raleway', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.25rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(28,25,23,0.08);
+  }
+  .logo {
+    font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
+    color: var(--bark); letter-spacing: -0.02em; text-decoration: none;
+  }
+  .logo span { color: var(--violet); }
+
+  /* ─── PHOTO PLACEHOLDER SYSTEM ─── */
+  /* Replace .photo-placeholder with <img src="YOUR_PHOTO"> to use real images */
+  .photo-placeholder {
+    background: var(--sand);
+    position: relative;
+    overflow: hidden;
+    display: block;
+  }
+  .photo-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(255,255,255,0.06) 20px,
+        rgba(255,255,255,0.06) 21px
+      );
+  }
+  .photo-placeholder .photo-label {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem;
+    color: rgba(28,25,23,0.45);
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-align: center; padding: 1rem;
+  }
+  .photo-label svg { opacity: 0.4; }
+
+  /* Warm tonal variants */
+  .photo-placeholder.dark { background: #2A2019; }
+  .photo-placeholder.dark .photo-label { color: rgba(245,240,232,0.4); }
+  .photo-placeholder.sage { background: #2E7D6B; }
+  .photo-placeholder.sage .photo-label { color: rgba(255,255,255,0.5); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 70vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding-top: 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    padding: 5rem 3rem 5rem 2.5rem;
+    position: relative; z-index: 2;
+  }
+  .hero-right {
+    height: 70vh;
+    position: relative;
+  }
+  /* ↓ REPLACE THIS with <img> of a caregiver with their loved one */
+  .hero-right .photo-placeholder {
+    width: 100%; height: 100%;
+  }
+  .hero-right::after {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to right, var(--cream) 0%, transparent 30%);
+    z-index: 1;
+  }
+
+  /* Small floating accent photo */
+  .hero-photo-accent {
+    position: absolute; bottom: 4rem; left: 2.5rem;
+    width: 160px; height: 200px;
+    border-radius: 4px; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(28,25,23,0.2);
+    z-index: 3;
+  }
+  /* ↓ REPLACE with a close-up portrait of a caregiver */
+  .hero-photo-accent .photo-placeholder { width: 100%; height: 100%; }
+
+  .hero-eyebrow {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--sage); margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 3.5vw, 3.6rem);
+    font-weight: 700; line-height: 1.15;
+    letter-spacing: -0.02em; color: var(--bark); margin-bottom: 1.75rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--violet); }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--bark-mid);
+    max-width: 440px; line-height: 1.75; font-weight: 300;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    margin-top: 2.5rem;
+    padding: 0.9rem 1.75rem;
+    background: var(--amber); color: var(--bark);
+    font-family: var(--font-body); font-size: 0.9rem; font-weight: 700;
+    letter-spacing: 0.04em; text-decoration: none;
+    border-radius: 100px; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .hero-cta:hover { background: #d4b03e; transform: translateY(-1px); }
+  .hero-cta svg { flex-shrink: 0; }
+
+  /* ─── SHARED ─── */
+  .section-label {
+    font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 1rem; display: block;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700; line-height: 1.25;
+    letter-spacing: -0.02em; margin-bottom: 3.5rem;
+  }
+
+  /* ─── PAIN POINTS ─── */
+  .pain-section { background: var(--cream); padding: 7rem 0; }
+  .pain-inner { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+  .pain-section .section-label { color: var(--sage); }
+
+  .pain-two-col {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 6rem; align-items: start; margin-top: 3rem;
+  }
+
+  /* LEFT — sticky */
+  .pain-left { position: sticky; top: 7rem; }
+  .pain-left .section-title {
+    font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700;
+    color: var(--bark); line-height: 1.2; margin-bottom: 1.25rem;
+  }
+  .pain-left .section-sub {
+    font-size: 1rem; color: var(--text-secondary);
+    font-weight: 500; line-height: 1.7;
+  }
+  .pain-bridge {
+    margin-top: 2.5rem; padding: 1.75rem;
+    background: var(--warm-white); border-radius: 6px;
+    border-left: 3px solid var(--amber);
+  }
+  .pain-bridge p {
+    font-size: 0.95rem; color: var(--text-primary);
+    line-height: 1.75; font-weight: 500; margin-bottom: 0.6rem;
+  }
+  .pain-bridge p:last-child { margin-bottom: 0; color: var(--text-secondary); font-weight: 400; }
+
+  /* RIGHT — scrollable */
+  .pain-right { display: flex; flex-direction: column; gap: 3rem; }
+
+  /* Big stat */
+  .pain-stat {
+    background: var(--violet); border-radius: 10px;
+    padding: 2.5rem; position: relative; overflow: hidden;
+  }
+  .pain-stat::before {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 180px; height: 180px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .pain-stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
+    font-weight: 700; color: var(--amber);
+    line-height: 1; letter-spacing: -0.04em;
+  }
+  .pain-stat-text {
+    margin-top: 0.75rem; font-size: 1rem;
+    color: rgba(245,240,232,0.7); font-weight: 500; line-height: 1.6;
+    max-width: 380px;
+  }
+
+  /* Categories */
+  .pain-categories { display: flex; flex-direction: column; gap: 2rem; }
+
+  .pain-category-block {
+    background: var(--warm-white); border-radius: 10px;
+    padding: 1.75rem; border: 1px solid rgba(28,25,23,0.07);
+  }
+  .pain-category-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 1.1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .pain-category-label.emotional { color: var(--terracotta); }
+  .pain-category-label.financial { color: var(--sage); }
+
+  .pain-bubbles { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+
+  .pain-bubble {
+    display: flex; align-items: center; gap: 0.55rem;
+    padding: 0.6rem 1rem; border-radius: 100px; border: 1px solid;
+    cursor: default; transition: transform 0.15s;
+  }
+  .pain-bubble:hover { transform: translateY(-1px); }
+  .pain-bubble.emotional {
+    background: var(--terracotta-pale);
+    border-color: rgba(193,123,78,0.35); color: var(--terracotta);
+  }
+  .pain-bubble.financial {
+    background: var(--sage-pale);
+    border-color: rgba(46,125,107,0.3); color: var(--sage);
+  }
+  .pain-bubble svg { flex-shrink: 0; opacity: 0.85; }
+  .pain-bubble span { font-size: 0.875rem; font-weight: 600; line-height: 1.2; white-space: nowrap; }
+
+  /* ─── WHAT CARRIAGE DOES ─── */
+  .what-section { background: var(--sand-pale); padding: 6rem 0; }
+  .what-inner { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+  .what-section .section-label { color: var(--sage); }
+  .what-section .section-title { color: var(--bark); }
+
+  .module-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .module-card {
+    background: var(--warm-white); border-radius: 6px;
+    padding: 2.25rem 2rem; display: flex; flex-direction: column;
+    border: 1px solid rgba(28,25,23,0.08);
+    position: relative; overflow: hidden;
+  }
+  .module-card.coming-soon { opacity: 1; }
+  .module-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+  }
+  .module-card.emotional::before { background: var(--terracotta); }
+  .module-card.financial::before { background: var(--sage); }
+  .module-card.training::before { background: var(--violet); }
+
+  .module-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 1.5rem;
+    padding: 0.3rem 0.65rem; border-radius: 2rem;
+  }
+  .module-badge.now { background: var(--sage-pale); color: var(--sage); }
+  .module-badge.soon { background: var(--violet-pale); color: var(--violet); }
+  .module-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+  .module-card-header {
+    display: flex; align-items: center; gap: 0.85rem;
+    margin-bottom: 1.1rem;
+  }
+  .module-icon {
+    width: 48px; height: 48px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .module-icon img { width: 30px; height: 30px; object-fit: contain; }
+  .module-card.emotional .module-icon { background: var(--terracotta-pale); }
+  .module-card.financial .module-icon { background: var(--sage-pale); }
+  .module-card.training .module-icon { background: var(--violet-pale); }
+
+  .module-card h3 {
+    font-family: var(--font-display); font-size: 1.2rem;
+    font-weight: 600; color: var(--bark);
+    margin-bottom: 0; line-height: 1.3;
+  }
+  .module-card p {
+    font-size: 0.975rem; color: var(--text-primary);
+    line-height: 1.7; font-weight: 400; flex: 1;
+  }
+
+  .module-connect {
+    margin-top: 2.5rem; padding: 1.75rem 2rem;
+    background: var(--cream); border-radius: 4px;
+    border-left: 3px solid var(--bark-light);
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .module-connect-icon { flex-shrink: 0; color: var(--bark-light); margin-top: 2px; }
+  .module-connect p {
+    font-size: 0.975rem; color: var(--text-primary);
+    line-height: 1.7; font-weight: 400;
+  }
+  .module-connect strong { color: var(--bark); font-weight: 700; }
+
+  /* ─── FOR CAREGIVERS / THERAPISTS ─── */
+  .for-section { display: grid; grid-template-columns: 1fr 1fr; }
+  .for-card {
+    padding: 5rem 3.5rem; position: relative;
+    overflow: hidden; min-height: 600px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .for-card-bg { position: absolute; inset: 0; z-index: 0; }
+  /* ↓ REPLACE with photo of caregiver holding hands with elderly parent */
+  /* ↓ REPLACE with photo of a therapist in a calm, warm setting */
+  .for-card-bg .photo-placeholder { width: 100%; height: 100%; }
+  .for-card.caregivers .for-card-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(28,25,23,0.92) 40%, rgba(28,25,23,0.35) 100%);
+  }
+  .for-card.therapists .for-card-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(18,58,50,0.92) 40%, rgba(18,58,50,0.35) 100%);
+  }
+  .for-card-content { position: relative; z-index: 1; }
+  .for-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+    display: block; color: rgba(255,255,255,0.55);
+  }
+  .for-card h2 {
+    font-family: var(--font-display); font-size: 1.6rem;
+    font-weight: 500; color: white; margin-bottom: 1.75rem; line-height: 1.25;
+  }
+  .for-list { list-style: none; display: flex; flex-direction: column; gap: 0.875rem; }
+  .for-list li {
+    font-size: 0.875rem; color: rgba(255,255,255,0.65);
+    line-height: 1.6; padding-left: 1.25rem;
+    position: relative; font-weight: 300;
+  }
+  .for-list li::before { content: '–'; position: absolute; left: 0; color: rgba(255,255,255,0.3); }
+
+  /* ─── SOCIAL PROOF ─── */
+  .trust-section {
+    background: var(--warm-white); padding: 5rem 0;
+    border-top: 1px solid rgba(28,25,23,0.08);
+    border-bottom: 1px solid rgba(28,25,23,0.08);
+  }
+  .trust-inner { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+  .trust-badges { display: flex; gap: 2rem; margin-bottom: 4rem; flex-wrap: wrap; }
+  .badge {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.8rem; color: var(--text-secondary);
+    font-weight: 500; letter-spacing: 0.02em;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); flex-shrink: 0; }
+  .testimonials { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .testimonial {
+    padding: 2.5rem; background: var(--cream);
+    border-radius: 4px; border-left: 3px solid var(--amber);
+  }
+  .testimonial blockquote {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 1rem; color: var(--bark); line-height: 1.7; margin-bottom: 1.25rem;
+  }
+  .testimonial cite {
+    font-size: 0.78rem; color: var(--text-muted); font-style: normal;
+    letter-spacing: 0.05em; text-transform: uppercase; font-weight: 500;
+  }
+
+  /* ─── CLOSING CTA ─── */
+  .cta-section {
+    text-align: center; padding: 9rem 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  /* ↓ REPLACE with a warm, hopeful photo — caregiver finally resting or smiling */
+  .cta-bg { position: absolute; inset: 0; z-index: 0; }
+  .cta-bg .photo-placeholder { width: 100%; height: 100%; }
+  .cta-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(28,25,23,0.82); z-index: 1;
+  }
+  .cta-content { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
+  .cta-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 500;
+    color: white; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+  }
+  .cta-section h2 em { font-style: italic; color: var(--amber); }
+  .cta-section p {
+    color: rgba(255,255,255,0.6); font-size: 1rem;
+    font-weight: 300; line-height: 1.7;
+  }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--bark); padding: 3rem 2.5rem; }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo {
+    font-family: var(--font-display); font-size: 1.2rem;
+    color: rgba(255,255,255,0.8); font-weight: 500;
+  }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a {
+    color: rgba(255,255,255,0.4); text-decoration: none;
+    font-size: 0.8rem; letter-spacing: 0.05em; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.75); }
+  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * { animation: fadeUp 0.7s ease both; }
+  .hero h1 { animation-delay: 0.1s; }
+  .hero-sub { animation-delay: 0.25s; }
+  .hero-cta { animation-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { height: 45vw; min-height: 220px; }
+    .hero-left { padding: 5rem 1.5rem 3rem; }
+    .pain-two-col { grid-template-columns: 1fr; gap: 3rem; }
+    .pain-left { position: static; }
+    .pain-bubble span { white-space: normal; }
+    .module-grid { grid-template-columns: 1fr; }
+    .for-section { grid-template-columns: 1fr; }
+    .for-card { min-height: 480px; padding: 3rem 2rem; }
+    .testimonials { grid-template-columns: 1fr; }
+    .pain-inner, .what-inner, .trust-inner { padding: 0 1.5rem; }
+    .pain-section, .what-section, .trust-section { padding: 4rem 0; }
+    .cta-section { padding: 6rem 1.5rem; }
+    .footer-inner { flex-direction: column; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Carriage<span>.</span></a>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+     Photo 1 (hero-right): Caregiver with elderly parent / loved one
+     Photo 2 (hero-photo-accent): Close-up of caregiver face, emotional
+══════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-left">
+    <h1>Support for the caregivers who support <em>everyone else</em></h1>
+    <p class="hero-sub">You're always there for someone else. Carriage is always there for you. Get the support you need.</p>
+    <a href="#" class="hero-cta">
+      Speak to a Care Professional
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="hero-right">
+    <img src="hero.png" alt="Caregiver holding hands with elderly loved one" style="width:100%;height:100%;object-fit:cover;display:block;">
+  </div>
+
+</div>
+
+<!-- WHAT CARRIAGE DOES -->
+<div class="what-section">
+  <div class="what-inner">
+    <span class="section-label">Our Services</span>
+    <h2 class="section-title">Tailored support for every stage of the caregiving journey.</h2>
+
+    <div class="module-grid">
+      <div class="module-card emotional">
+        <div class="module-card-header">
+          <div class="module-icon"><img src="support.png" alt="Emotional support"></div>
+          <h3>Emotional support</h3>
+        </div>
+        <p>Talk to a licensed Care Professional who understands caregiving. Book a session directly — covered by your employer or via CHAS subsidy.</p>
+      </div>
+
+      <div class="module-card financial">
+        <div class="module-card-header">
+          <div class="module-icon"><img src="salary.png" alt="Financial clarity"></div>
+          <h3>Financial clarity</h3>
+        </div>
+        <p>Find subsidies you qualify for, plan your care costs, and get step-by-step guidance through MOH, MSF, and AIC schemes.</p>
+      </div>
+
+      <div class="module-card training coming-soon">
+        <div class="module-card-header">
+          <div class="module-icon"><img src="training.png" alt="Caregiver training"></div>
+          <h3>Caregiver training</h3>
+        </div>
+        <p>Practical skills for the caregiving journey. Physical workshops and online courses, built around real conditions — dementia, stroke, palliative care.</p>
+      </div>
+    </div>
+
+    <div class="module-connect">
+      <div class="module-connect-icon">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <p><strong>How Carriage's services connect with one another:</strong> Our trained Care Professionals can route you to financial support available or recommend hands-on caregiver training — so support does not stop at the emotional layer.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN POINTS -->
+<div class="pain-section">
+  <div class="pain-inner">
+    <span class="section-label">What caregivers carry</span>
+
+    <div class="pain-two-col">
+
+      <!-- LEFT: sticky heading -->
+      <div class="pain-left">
+        <h2 class="section-title">We see what you're going through.</h2>
+        <p class="section-sub">Caregiving in Singapore is one of the hardest things a person can do — and almost no one talks about what it actually costs you.</p>
+        <img src="pain-image.png" alt="Caregiver" style="width:100%;border-radius:10px;margin-top:1.75rem;display:block;object-fit:cover;">
+        <div class="pain-bridge">
+          <p><strong>You shouldn't have to navigate this alone — Our Care Professionals will support you at every step of the way.</strong></p>
+        </div>
+      </div>
+
+      <!-- RIGHT: stat + bubbles -->
+      <div class="pain-right">
+
+        <div class="pain-stat">
+          <div class="pain-stat-num">1 in 3</div>
+          <p class="pain-stat-text">caregivers in Singapore report high emotional distress — most suffer in silence</p>
+        </div>
+
+        <div class="pain-categories">
+
+          <div class="pain-category-block">
+            <p class="pain-category-label emotional">Emotional burden</p>
+            <div class="pain-bubbles">
+              <div class="pain-bubble emotional">
+                <img src="lack-of-motivation.png" width="16" height="16" style="object-fit:contain;flex-shrink:0;">
+                <span>Bone-deep exhaustion</span>
+              </div>
+              <div class="pain-bubble emotional">
+                <img src="alone.png" width="16" height="16" style="object-fit:contain;flex-shrink:0;">
+                <span>Carrying it alone</span>
+              </div>
+              <div class="pain-bubble emotional">
+                <img src="user-guide.png" width="16" height="16" style="object-fit:contain;flex-shrink:0;">
+                <span>No training or manual</span>
+              </div>
+              <div class="pain-bubble emotional">
+                <img src="social-withdrawal.png" width="16" height="16" style="object-fit:contain;flex-shrink:0;">
+                <span>Growing isolation</span>
+              </div>
+              <div class="pain-bubble emotional">
+                <img src="social-distancing.png" width="16" height="16" style="object-fit:contain;flex-shrink:0;">
+                <span>Life quietly shrinking</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pain-category-block">
+            <p class="pain-category-label financial">Financial pressure</p>
+            <div class="pain-bubbles">
+              <div class="pain-bubble financial">
+                <img src="inflation-rate.png" width="16" height="16" style="object-fit:contain;flex-shrink:0;">
+                <span>Monthly cost calculations</span>
+              </div>
+              <div class="pain-bubble financial">
+                <img src="hard-work.png" width="16" height="16" style="object-fit:contain;flex-shrink:0;">
+                <span>Work is impossible to keep up</span>
+              </div>
+              <div class="pain-bubble financial">
+                <img src="donation.png" width="16" height="16" style="object-fit:contain;flex-shrink:0;">
+                <span>Missing subsidies you're entitled to</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     CLOSING CTA
+     Photo 8: A caregiver finally at rest — quiet, hopeful, human
+══════════════════════════════════════════════ -->
+<div class="cta-section">
+  <div class="cta-bg">
+    <!-- REPLACE: hopeful image — caregiver in a quiet moment, looking out a window, or finally resting -->
+    <div class="photo-placeholder dark" style="width:100%;height:100%;">
+      <div class="photo-label" style="color:rgba(250,247,242,0.25);">Hopeful caregiver moment</div>
+    </div>
+  </div>
+  <div class="cta-content">
+    <h2>You've been strong long enough. <em>Let's talk.</em></h2>
+    <p>Carriage is here for the caregivers who've been holding everything together — and need someone to hold space for them.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Carriage.</div>
+    <ul class="footer-links">
+      <li><a href="#">About</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="terms-of-use.html">Terms of Use</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Carriage. Singapore.</p>
+  </div>
+</footer>
+
+</body>
+</html>

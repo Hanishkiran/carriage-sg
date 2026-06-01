@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Carriage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF7F0;
+    --bark: #1C1917;
+    --bark-mid: #3D2E26;
+    --text-secondary: #4A3830;
+    --text-muted: #8C7060;
+    --amber: #E8C547;
+    --violet: #6B5EA8;
+    --violet-pale: #EAE8F5;
+    --sage: #2E7D6B;
+    --sage-pale: #D4EDE8;
+    --terracotta: #C17B4E;
+    --sand: #C8BAA0;
+    --font: 'Raleway', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    background: var(--cream);
+    color: var(--bark);
+    font-size: 16px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.25rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(28,25,23,0.08);
+  }
+  .logo {
+    font-family: var(--font); font-size: 1.5rem; font-weight: 700;
+    color: var(--bark); letter-spacing: -0.02em; text-decoration: none;
+  }
+  .logo span { color: var(--violet); }
+  .nav-back {
+    font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);
+    text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--bark); }
+
+  /* HERO */
+  .page-hero {
+    padding: 9rem 2.5rem 4rem;
+    max-width: 800px; margin: 0 auto;
+    border-bottom: 1px solid rgba(28,25,23,0.08);
+  }
+  .page-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--violet);
+    background: var(--violet-pale); padding: 0.35rem 0.85rem;
+    border-radius: 100px; margin-bottom: 1.5rem;
+  }
+  .page-hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+    line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1rem;
+  }
+  .page-hero .meta {
+    font-size: 0.875rem; color: var(--text-muted); font-weight: 500;
+  }
+  .beta-notice {
+    margin-top: 1.5rem; padding: 1rem 1.25rem;
+    background: var(--violet-pale); border-left: 3px solid var(--violet);
+    border-radius: 4px; font-size: 0.875rem; color: var(--violet);
+    font-weight: 600; line-height: 1.6;
+  }
+
+  /* CONTENT */
+  .page-body {
+    max-width: 800px; margin: 0 auto;
+    padding: 4rem 2.5rem 6rem;
+  }
+
+  .toc {
+    background: var(--warm-white); border-radius: 8px;
+    padding: 1.75rem 2rem; margin-bottom: 3.5rem;
+    border: 1px solid rgba(28,25,23,0.07);
+  }
+  .toc h3 {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .toc ol {
+    list-style: none; display: flex; flex-direction: column; gap: 0.4rem;
+    counter-reset: toc;
+  }
+  .toc ol li { counter-increment: toc; }
+  .toc ol li a {
+    font-size: 0.9rem; font-weight: 500; color: var(--violet);
+    text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+  }
+  .toc ol li a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-size: 0.7rem; color: var(--text-muted); font-weight: 600;
+    min-width: 1.5rem;
+  }
+  .toc ol li a:hover { text-decoration: underline; }
+
+  section { margin-bottom: 3.5rem; scroll-margin-top: 6rem; }
+  section h2 {
+    font-size: 1.35rem; font-weight: 700; color: var(--bark);
+    margin-bottom: 1rem; padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--amber);
+    display: inline-block;
+  }
+  section h3 {
+    font-size: 1rem; font-weight: 700; color: var(--bark);
+    margin-top: 1.5rem; margin-bottom: 0.5rem;
+  }
+  section p {
+    font-size: 0.975rem; color: var(--text-secondary);
+    line-height: 1.85; margin-bottom: 0.9rem; font-weight: 400;
+  }
+  section ul, section ol {
+    padding-left: 1.25rem; margin-bottom: 0.9rem;
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  section li {
+    font-size: 0.975rem; color: var(--text-secondary);
+    line-height: 1.75; font-weight: 400;
+  }
+  .highlight-box {
+    background: var(--warm-white); border-left: 3px solid var(--terracotta);
+    padding: 1.25rem 1.5rem; border-radius: 4px; margin: 1.25rem 0;
+  }
+  .highlight-box p { margin-bottom: 0; color: var(--bark); font-weight: 500; }
+
+  /* FOOTER */
+  footer {
+    background: var(--bark); padding: 2.5rem 2.5rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: var(--font); font-size: 1.1rem;
+    color: rgba(255,255,255,0.8); font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .footer-links {
+    display: flex; gap: 1.5rem; list-style: none;
+    justify-content: center; margin-bottom: 1rem;
+  }
+  .footer-links a {
+    color: rgba(255,255,255,0.4); text-decoration: none;
+    font-size: 0.8rem; font-weight: 500; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.75); }
+  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.25rem; }
+    .page-hero, .page-body { padding-left: 1.25rem; padding-right: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="carriage-landing.html" class="logo">Carriage<span>.</span></a>
+  <a href="carriage-landing.html" class="nav-back">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to home
+  </a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-tag">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Last updated: 30 May 2026 &nbsp;·&nbsp; Effective: 30 May 2026</p>
+  <div class="beta-notice">
+    Carriage is currently in beta. This policy reflects our practices at this stage and will be updated as our services evolve. We will notify you of material changes.
+  </div>
+</div>
+
+<div class="page-body">
+
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#who-we-are">Who We Are</a></li>
+      <li><a href="#data-we-collect">Data We Collect</a></li>
+      <li><a href="#how-we-use">How We Use Your Data</a></li>
+      <li><a href="#pdpa">PDPA Compliance</a></li>
+      <li><a href="#sensitive-data">Sensitive Health Data</a></li>
+      <li><a href="#sharing">Sharing of Data</a></li>
+      <li><a href="#retention">Data Retention</a></li>
+      <li><a href="#your-rights">Your Rights</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#cookies">Cookies</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact &amp; DPO</a></li>
+    </ol>
+  </div>
+
+  <section id="who-we-are">
+    <h2>1. Who We Are</h2>
+    <p>Carriage is a Singapore-based digital platform that connects family caregivers with licensed Care Professionals, financial support resources, and caregiver training. We are currently operating in beta.</p>
+    <p>References to <strong>"Carriage"</strong>, <strong>"we"</strong>, <strong>"us"</strong>, or <strong>"our"</strong> in this policy refer to Carriage and its team. We are committed to protecting your personal data in accordance with Singapore's <strong>Personal Data Protection Act 2012 (PDPA)</strong> and its subsequent amendments.</p>
+  </section>
+
+  <section id="data-we-collect">
+    <h2>2. Data We Collect</h2>
+    <p>We collect personal data that you provide directly, as well as data generated through your use of our platform.</p>
+
+    <h3>Data you provide</h3>
+    <ul>
+      <li>Name, email address, and contact number</li>
+      <li>Information about your caregiving situation (e.g. who you are caring for, their condition, your caregiving duration)</li>
+      <li>Employment and employer information (for CHAS or employer-covered sessions)</li>
+      <li>Financial information relevant to subsidy eligibility assessments</li>
+      <li>Preferences and intake responses submitted during onboarding</li>
+    </ul>
+
+    <h3>Data generated through use</h3>
+    <ul>
+      <li>Session scheduling and attendance records</li>
+      <li>Platform usage data (pages visited, features used, session duration)</li>
+      <li>Device and browser information</li>
+      <li>Communications between you and Carriage support</li>
+    </ul>
+
+    <h3>Data we do not collect directly</h3>
+    <p>Session content between you and your Care Professional is governed by professional confidentiality obligations. Carriage does not routinely access, store, or review the content of your care sessions.</p>
+  </section>
+
+  <section id="how-we-use">
+    <h2>3. How We Use Your Data</h2>
+    <p>We use your personal data only for purposes that are reasonable and appropriate, including:</p>
+    <ul>
+      <li>Matching you with a suitable Care Professional based on your needs</li>
+      <li>Facilitating session bookings and reminders</li>
+      <li>Assessing your eligibility for subsidies under CHAS, employer-funded programmes, or other government schemes</li>
+      <li>Processing payments and reimbursements</li>
+      <li>Communicating service updates, appointment confirmations, and important notices</li>
+      <li>Improving our platform, services, and user experience</li>
+      <li>Complying with applicable Singapore laws and regulations</li>
+      <li>Responding to your enquiries and feedback</li>
+    </ul>
+    <p>We will not use your data for purposes beyond those stated without your consent.</p>
+  </section>
+
+  <section id="pdpa">
+    <h2>4. PDPA Compliance</h2>
+    <p>Carriage complies with the <strong>Personal Data Protection Act 2012 (PDPA)</strong>, as administered by the <strong>Personal Data Protection Commission (PDPC)</strong> of Singapore.</p>
+    <p>In accordance with the PDPA, we will:</p>
+    <ul>
+      <li>Collect personal data only with your knowledge and consent, or as otherwise permitted by law</li>
+      <li>Inform you of the purposes for which your data is collected at or before the point of collection</li>
+      <li>Use and disclose your data only for the purposes you have consented to</li>
+      <li>Ensure your data is accurate and complete where it is likely to be used for a decision affecting you</li>
+      <li>Protect your data with reasonable security arrangements</li>
+      <li>Retain your data only for as long as necessary for the stated purposes or as required by law</li>
+      <li>Allow you to access and correct your personal data upon request</li>
+    </ul>
+    <div class="highlight-box">
+      <p>If you believe we have not handled your personal data in accordance with the PDPA, you have the right to lodge a complaint with the PDPC at <strong>www.pdpc.gov.sg</strong>.</p>
+    </div>
+  </section>
+
+  <section id="sensitive-data">
+    <h2>5. Sensitive Health Data</h2>
+    <p>Because Carriage operates in the mental health and caregiving space, some of the information you share may be sensitive in nature — including details about your emotional wellbeing, caregiving challenges, or the health conditions of the person you care for.</p>
+    <p>We treat this information with heightened care:</p>
+    <ul>
+      <li>Sensitive data is accessed only by authorised personnel and Care Professionals directly involved in your care</li>
+      <li>We do not sell or commercially exploit any health-related information</li>
+      <li>Session content shared with your Care Professional is protected by professional confidentiality obligations</li>
+      <li>Disclosure of sensitive information will only occur where required by law (e.g. mandatory reporting obligations), where there is serious risk of harm, or with your explicit consent</li>
+    </ul>
+    <p>Our Care Professionals are bound by the ethical standards of their respective professional bodies in Singapore, including obligations under the Singapore Association for Counselling (SAC) and relevant MOH-registered guidelines.</p>
+  </section>
+
+  <section id="sharing">
+    <h2>6. Sharing of Data</h2>
+    <p>We do not sell your personal data. We may share it in the following limited circumstances:</p>
+
+    <h3>Care Professionals</h3>
+    <p>Your intake information and relevant background details are shared with the Care Professional assigned to you, to facilitate appropriate and informed support.</p>
+
+    <h3>Government and subsidy bodies</h3>
+    <p>Where you apply for financial subsidies (e.g. CHAS, MOH, MSF, or AIC schemes), we may be required to share relevant information with the administering authority to verify eligibility or process claims.</p>
+
+    <h3>Employers</h3>
+    <p>If your sessions are funded through an employer programme, we may confirm session attendance to the relevant employer or insurer. We will not share session content or clinical notes.</p>
+
+    <h3>Service providers</h3>
+    <p>We engage trusted third-party providers for functions such as cloud hosting, video conferencing, and payment processing. These providers are contractually obligated to protect your data and use it only as directed by us.</p>
+
+    <h3>Legal obligations</h3>
+    <p>We may disclose your data if required by Singapore law, court order, or regulatory authority, or where necessary to protect the safety of any individual.</p>
+  </section>
+
+  <section id="retention">
+    <h2>7. Data Retention</h2>
+    <p>We retain your personal data for as long as necessary to fulfil the purposes outlined in this policy, or as required by law.</p>
+    <ul>
+      <li>Account and session records are retained for a minimum of <strong>5 years</strong> from the date of your last session, in line with general professional record-keeping standards in Singapore</li>
+      <li>Financial and subsidy-related records may be retained for up to <strong>7 years</strong> for accounting and audit purposes</li>
+      <li>If you request deletion of your account, we will remove your data within 30 days, except where retention is required by law</li>
+    </ul>
+  </section>
+
+  <section id="your-rights">
+    <h2>8. Your Rights</h2>
+    <p>Under the PDPA, you have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> — Request a copy of the personal data we hold about you</li>
+      <li><strong>Correction</strong> — Request that inaccurate or incomplete data be corrected</li>
+      <li><strong>Withdrawal of consent</strong> — Withdraw consent for use of your data at any time, subject to legal or contractual obligations</li>
+      <li><strong>Data portability</strong> — Request that your data be provided to you in a common machine-readable format (where applicable under the PDPA)</li>
+    </ul>
+    <p>To exercise any of these rights, please contact our Data Protection Officer at the details in Section 13. We will respond within <strong>30 days</strong>.</p>
+  </section>
+
+  <section id="security">
+    <h2>9. Security</h2>
+    <p>We implement reasonable security measures to protect your personal data against unauthorised access, disclosure, alteration, or destruction. These include:</p>
+    <ul>
+      <li>Encryption of data in transit (TLS/HTTPS)</li>
+      <li>Access controls limiting data access to authorised personnel only</li>
+      <li>Regular review of our security practices as our platform matures</li>
+    </ul>
+    <p>As a beta-stage platform, we are continuously improving our security infrastructure. If you become aware of any security vulnerability or incident, please contact us immediately at <strong>hello@carriagesg.com</strong>.</p>
+  </section>
+
+  <section id="cookies">
+    <h2>10. Cookies</h2>
+    <p>We use cookies and similar technologies to operate our platform and understand how users interact with it. This includes:</p>
+    <ul>
+      <li><strong>Essential cookies</strong> — Required for the platform to function (e.g. session management)</li>
+      <li><strong>Analytics cookies</strong> — Help us understand usage patterns so we can improve the experience</li>
+    </ul>
+    <p>You can manage cookie preferences through your browser settings. Disabling essential cookies may affect platform functionality.</p>
+  </section>
+
+  <section id="children">
+    <h2>11. Children's Privacy</h2>
+    <p>Carriage's services are intended for adults aged 18 and above. We do not knowingly collect personal data from individuals under 18. If you believe we have inadvertently collected data from a minor, please contact us and we will promptly delete it.</p>
+  </section>
+
+  <section id="changes">
+    <h2>12. Changes to This Policy</h2>
+    <p>As Carriage grows and our services evolve — particularly during our beta phase — this Privacy Policy may be updated. We will notify registered users of material changes via email and post the updated policy on our website with a revised "Last updated" date.</p>
+    <p>Your continued use of the platform after changes are notified constitutes your acceptance of the updated policy.</p>
+  </section>
+
+  <section id="contact">
+    <h2>13. Contact &amp; Data Protection Officer</h2>
+    <p>If you have any questions, concerns, or requests relating to your personal data or this Privacy Policy, please contact:</p>
+    <div class="highlight-box">
+      <p><strong>Data Protection Officer</strong><br>
+      Carriage<br>
+      Email: <strong>dpo@carriagesg.com</strong><br>
+      General enquiries: <strong>hello@carriagesg.com</strong><br>
+      Singapore</p>
+    </div>
+    <p>We take all privacy enquiries seriously and will respond within 30 days of receiving your request.</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Carriage.</div>
+  <ul class="footer-links">
+    <li><a href="carriage-landing.html">Home</a></li>
+    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+    <li><a href="terms-of-use.html">Terms of Use</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Carriage. Singapore. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

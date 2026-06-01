@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use — Carriage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF7F0;
+    --bark: #1C1917;
+    --bark-mid: #3D2E26;
+    --text-secondary: #4A3830;
+    --text-muted: #8C7060;
+    --amber: #E8C547;
+    --violet: #6B5EA8;
+    --violet-pale: #EAE8F5;
+    --sage: #2E7D6B;
+    --sage-pale: #D4EDE8;
+    --terracotta: #C17B4E;
+    --terracotta-pale: #F5E4D4;
+    --font: 'Raleway', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    background: var(--cream);
+    color: var(--bark);
+    font-size: 16px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.25rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(28,25,23,0.08);
+  }
+  .logo {
+    font-family: var(--font); font-size: 1.5rem; font-weight: 700;
+    color: var(--bark); letter-spacing: -0.02em; text-decoration: none;
+  }
+  .logo span { color: var(--violet); }
+  .nav-back {
+    font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);
+    text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--bark); }
+
+  .page-hero {
+    padding: 9rem 2.5rem 4rem;
+    max-width: 800px; margin: 0 auto;
+    border-bottom: 1px solid rgba(28,25,23,0.08);
+  }
+  .page-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--violet);
+    background: var(--violet-pale); padding: 0.35rem 0.85rem;
+    border-radius: 100px; margin-bottom: 1.5rem;
+  }
+  .page-hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+    line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1rem;
+  }
+  .page-hero .meta {
+    font-size: 0.875rem; color: var(--text-muted); font-weight: 500;
+  }
+  .beta-notice {
+    margin-top: 1.5rem; padding: 1rem 1.25rem;
+    background: var(--violet-pale); border-left: 3px solid var(--violet);
+    border-radius: 4px; font-size: 0.875rem; color: var(--violet);
+    font-weight: 600; line-height: 1.6;
+  }
+
+  .page-body {
+    max-width: 800px; margin: 0 auto;
+    padding: 4rem 2.5rem 6rem;
+  }
+
+  .toc {
+    background: var(--warm-white); border-radius: 8px;
+    padding: 1.75rem 2rem; margin-bottom: 3.5rem;
+    border: 1px solid rgba(28,25,23,0.07);
+  }
+  .toc h3 {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .toc ol {
+    list-style: none; display: flex; flex-direction: column; gap: 0.4rem;
+    counter-reset: toc;
+  }
+  .toc ol li { counter-increment: toc; }
+  .toc ol li a {
+    font-size: 0.9rem; font-weight: 500; color: var(--violet);
+    text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+  }
+  .toc ol li a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-size: 0.7rem; color: var(--text-muted); font-weight: 600;
+    min-width: 1.5rem;
+  }
+  .toc ol li a:hover { text-decoration: underline; }
+
+  section { margin-bottom: 3.5rem; scroll-margin-top: 6rem; }
+  section h2 {
+    font-size: 1.35rem; font-weight: 700; color: var(--bark);
+    margin-bottom: 1rem; padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--amber);
+    display: inline-block;
+  }
+  section h3 {
+    font-size: 1rem; font-weight: 700; color: var(--bark);
+    margin-top: 1.5rem; margin-bottom: 0.5rem;
+  }
+  section p {
+    font-size: 0.975rem; color: var(--text-secondary);
+    line-height: 1.85; margin-bottom: 0.9rem; font-weight: 400;
+  }
+  section ul, section ol {
+    padding-left: 1.25rem; margin-bottom: 0.9rem;
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  section li {
+    font-size: 0.975rem; color: var(--text-secondary);
+    line-height: 1.75; font-weight: 400;
+  }
+  .highlight-box {
+    background: var(--warm-white); border-left: 3px solid var(--terracotta);
+    padding: 1.25rem 1.5rem; border-radius: 4px; margin: 1.25rem 0;
+  }
+  .highlight-box p { margin-bottom: 0; color: var(--bark); font-weight: 500; }
+  .warning-box {
+    background: var(--terracotta-pale); border-left: 3px solid var(--terracotta);
+    padding: 1.25rem 1.5rem; border-radius: 4px; margin: 1.25rem 0;
+  }
+  .warning-box p { margin-bottom: 0; color: var(--bark); font-weight: 600; }
+
+  footer {
+    background: var(--bark); padding: 2.5rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: var(--font); font-size: 1.1rem;
+    color: rgba(255,255,255,0.8); font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .footer-links {
+    display: flex; gap: 1.5rem; list-style: none;
+    justify-content: center; margin-bottom: 1rem;
+  }
+  .footer-links a {
+    color: rgba(255,255,255,0.4); text-decoration: none;
+    font-size: 0.8rem; font-weight: 500; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.75); }
+  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.25rem; }
+    .page-hero, .page-body { padding-left: 1.25rem; padding-right: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="carriage-landing.html" class="logo">Carriage<span>.</span></a>
+  <a href="carriage-landing.html" class="nav-back">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to home
+  </a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-tag">Legal</div>
+  <h1>Terms of Use</h1>
+  <p class="meta">Last updated: 30 May 2026 &nbsp;·&nbsp; Effective: 30 May 2026</p>
+  <div class="beta-notice">
+    Carriage is currently in beta. Our services, features, and these terms may change as we grow. We will notify you of material updates.
+  </div>
+</div>
+
+<div class="page-body">
+
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#acceptance">Acceptance of Terms</a></li>
+      <li><a href="#about">About Carriage</a></li>
+      <li><a href="#beta">Beta Service</a></li>
+      <li><a href="#eligibility">Eligibility</a></li>
+      <li><a href="#not-emergency">Not an Emergency Service</a></li>
+      <li><a href="#care-professionals">Our Care Professionals</a></li>
+      <li><a href="#confidentiality">Confidentiality</a></li>
+      <li><a href="#subsidies">Subsidies &amp; Payments</a></li>
+      <li><a href="#user-conduct">User Conduct</a></li>
+      <li><a href="#intellectual-property">Intellectual Property</a></li>
+      <li><a href="#disclaimer">Disclaimer of Warranties</a></li>
+      <li><a href="#liability">Limitation of Liability</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#governing-law">Governing Law</a></li>
+      <li><a href="#changes">Changes to Terms</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <section id="acceptance">
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing or using Carriage's platform, website, or services (collectively, the <strong>"Services"</strong>), you agree to be bound by these Terms of Use (<strong>"Terms"</strong>). If you do not agree to these Terms, please do not use our Services.</p>
+    <p>These Terms form a legally binding agreement between you and Carriage. Please read them carefully before using our platform.</p>
+  </section>
+
+  <section id="about">
+    <h2>2. About Carriage</h2>
+    <p>Carriage is a digital platform based in Singapore that supports family caregivers by connecting them with:</p>
+    <ul>
+      <li>Licensed Care Professionals for emotional and psychological support</li>
+      <li>Resources and guidance for accessing financial subsidies and government caregiving schemes</li>
+      <li>Caregiver training programmes (coming soon)</li>
+    </ul>
+    <p>Carriage is a facilitating platform. We are not a medical institution, hospital, or registered healthcare provider under the Private Hospitals and Medical Clinics Act or any other healthcare legislation in Singapore. Our Care Professionals are independent licensed practitioners who provide services through our platform.</p>
+  </section>
+
+  <section id="beta">
+    <h2>3. Beta Service</h2>
+    <p>Carriage is currently in <strong>beta</strong>. This means:</p>
+    <ul>
+      <li>Our platform and features are still being developed and tested</li>
+      <li>You may encounter bugs, errors, or service interruptions</li>
+      <li>Features may be added, modified, or removed without prior notice</li>
+      <li>These Terms and our Privacy Policy may be updated as our service evolves</li>
+    </ul>
+    <p>We appreciate your patience and feedback as we build Carriage. By using our beta platform, you acknowledge these limitations and agree not to hold Carriage liable for interruptions or changes to the service during this phase.</p>
+  </section>
+
+  <section id="eligibility">
+    <h2>4. Eligibility</h2>
+    <p>To use Carriage's Services, you must:</p>
+    <ul>
+      <li>Be at least <strong>18 years of age</strong></li>
+      <li>Be a resident of, or located in, <strong>Singapore</strong> at the time of using the Services</li>
+      <li>Have the legal capacity to enter into a binding agreement</li>
+      <li>Provide accurate and truthful information during registration and onboarding</li>
+    </ul>
+    <p>If you are registering on behalf of an organisation or employer, you warrant that you have authority to bind that organisation to these Terms.</p>
+  </section>
+
+  <section id="not-emergency">
+    <h2>5. Not an Emergency Service</h2>
+    <div class="warning-box">
+      <p>Carriage is not an emergency or crisis service. If you or someone you know is in immediate danger or experiencing a mental health crisis, please call <strong>999 (Police)</strong> or <strong>995 (Ambulance)</strong>, or contact the Samaritans of Singapore at <strong>1767</strong> (24 hours).</p>
+    </div>
+    <p>Our services are intended for ongoing caregiving support, not acute crisis intervention. Care Professionals on our platform are not on-call emergency responders and cannot guarantee immediate availability outside of scheduled sessions.</p>
+  </section>
+
+  <section id="care-professionals">
+    <h2>6. Our Care Professionals</h2>
+    <p>Carriage connects you with Care Professionals who are independently licensed practitioners. All Care Professionals on our platform are required to hold valid professional registrations or accreditations recognised in Singapore, which may include:</p>
+    <ul>
+      <li>Singapore Association for Counselling (SAC) accreditation</li>
+      <li>Singapore Psychological Society (SPS) membership</li>
+      <li>Other relevant professional bodies or MOH-recognised qualifications</li>
+    </ul>
+    <p>Carriage verifies credentials at the point of onboarding but does not provide ongoing supervision of Care Professionals' clinical practice. The therapeutic relationship is between you and your Care Professional.</p>
+    <p>Care Professionals may, in accordance with their professional and legal obligations, be required to break confidentiality in limited circumstances — including where there is serious risk of harm to you or others, or where required by Singapore law (e.g. the Mental Health (Care and Treatment) Act).</p>
+  </section>
+
+  <section id="confidentiality">
+    <h2>7. Confidentiality</h2>
+    <p>All Care Professionals on our platform are bound by professional confidentiality obligations under their respective professional codes of ethics. Information shared in your sessions is treated as confidential, subject to the limited exceptions described in Section 6.</p>
+    <p>Carriage itself does not access session content. Our handling of your personal data is governed by our <a href="privacy-policy.html" style="color:var(--violet);font-weight:600;">Privacy Policy</a>, which complies with Singapore's PDPA.</p>
+    <p>You agree not to record sessions without the explicit consent of your Care Professional, and not to share session content in a manner that could identify your Care Professional without their consent.</p>
+  </section>
+
+  <section id="subsidies">
+    <h2>8. Subsidies &amp; Payments</h2>
+    <p>Carriage facilitates access to caregiving-related financial support, including:</p>
+    <ul>
+      <li>Community Health Assist Scheme (CHAS) subsidies administered by the Ministry of Health (MOH)</li>
+      <li>Employer-funded mental health benefit programmes</li>
+      <li>Schemes administered by the Agency for Integrated Care (AIC) and the Ministry of Social and Family Development (MSF)</li>
+    </ul>
+    <p>Eligibility for subsidies is determined by the relevant government authority or employer, not by Carriage. We make reasonable efforts to guide you through applicable schemes but cannot guarantee subsidy approval.</p>
+    <p>Session fees, payment terms, and any applicable subsidies will be communicated to you clearly before you confirm a booking. All prices are in Singapore Dollars (SGD) unless otherwise stated.</p>
+    <div class="highlight-box">
+      <p>As a beta platform, our pricing and subsidy integration are still being finalised and may change. We will communicate any changes with reasonable notice.</p>
+    </div>
+  </section>
+
+  <section id="user-conduct">
+    <h2>9. User Conduct</h2>
+    <p>You agree to use Carriage's Services in good faith and in accordance with these Terms. You must not:</p>
+    <ul>
+      <li>Provide false, misleading, or fraudulent information</li>
+      <li>Use the platform for any unlawful purpose under Singapore law</li>
+      <li>Harass, threaten, or abuse Care Professionals or Carriage staff</li>
+      <li>Attempt to circumvent our platform to contact Care Professionals directly for sessions outside of Carriage</li>
+      <li>Reproduce, distribute, or commercialise any content from the platform without our written consent</li>
+      <li>Introduce malware or attempt to interfere with platform security</li>
+    </ul>
+    <p>Carriage reserves the right to suspend or terminate your access if we reasonably believe you have violated these Terms.</p>
+  </section>
+
+  <section id="intellectual-property">
+    <h2>10. Intellectual Property</h2>
+    <p>All content on the Carriage platform — including text, design, graphics, software, and brand elements — is owned by or licensed to Carriage and protected under Singapore's Copyright Act 2021 and applicable intellectual property laws.</p>
+    <p>You are granted a limited, non-exclusive, non-transferable licence to access and use the platform for personal, non-commercial purposes in accordance with these Terms. Nothing in these Terms transfers any intellectual property rights to you.</p>
+  </section>
+
+  <section id="disclaimer">
+    <h2>11. Disclaimer of Warranties</h2>
+    <p>Carriage's Services are provided <strong>"as is"</strong> and <strong>"as available"</strong>, particularly during our beta phase. To the fullest extent permitted by Singapore law, we disclaim all warranties, express or implied, including:</p>
+    <ul>
+      <li>That the platform will be uninterrupted, error-free, or secure at all times</li>
+      <li>That the outcomes of care sessions will meet your expectations</li>
+      <li>That information on subsidies or government schemes is exhaustive or up to date</li>
+    </ul>
+    <p>Nothing in these Terms excludes liability that cannot lawfully be excluded under Singapore law, including under the Consumer Protection (Fair Trading) Act.</p>
+  </section>
+
+  <section id="liability">
+    <h2>12. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by Singapore law, Carriage will not be liable for:</p>
+    <ul>
+      <li>Indirect, incidental, or consequential losses arising from your use of the platform</li>
+      <li>Loss of data, revenue, or opportunity</li>
+      <li>The actions, advice, or conduct of Care Professionals, who are independent practitioners</li>
+      <li>Interruptions to service during the beta phase</li>
+    </ul>
+    <p>Where liability cannot be excluded, our total liability to you in respect of any claim shall not exceed the amount you paid to us in the three (3) months preceding the claim.</p>
+  </section>
+
+  <section id="termination">
+    <h2>13. Termination</h2>
+    <p>You may stop using Carriage's Services at any time by deactivating your account. We will handle your data in accordance with our Privacy Policy upon account closure.</p>
+    <p>Carriage may suspend or terminate your access to the platform if:</p>
+    <ul>
+      <li>You breach any of these Terms</li>
+      <li>We are required to do so by law or regulatory authority</li>
+      <li>We discontinue or significantly alter the Service (with reasonable notice where possible)</li>
+    </ul>
+    <p>Termination does not affect any rights or obligations that arose before termination.</p>
+  </section>
+
+  <section id="governing-law">
+    <h2>14. Governing Law</h2>
+    <p>These Terms are governed by and construed in accordance with the laws of the <strong>Republic of Singapore</strong>. Any disputes arising from or in connection with these Terms shall be subject to the exclusive jurisdiction of the Singapore courts, unless otherwise required by mandatory applicable law.</p>
+    <p>We encourage users to reach out to us directly to resolve any concerns before pursuing formal dispute resolution.</p>
+  </section>
+
+  <section id="changes">
+    <h2>15. Changes to Terms</h2>
+    <p>We may update these Terms from time to time, particularly as our platform develops beyond beta. When we make material changes, we will:</p>
+    <ul>
+      <li>Notify registered users via email at least <strong>14 days</strong> before changes take effect</li>
+      <li>Update the "Last updated" date at the top of this page</li>
+    </ul>
+    <p>Your continued use of the Services after the effective date of updated Terms constitutes acceptance of those Terms. If you do not agree to the updated Terms, please discontinue use and contact us to close your account.</p>
+  </section>
+
+  <section id="contact">
+    <h2>16. Contact Us</h2>
+    <p>If you have questions about these Terms or our Services, please get in touch:</p>
+    <div class="highlight-box">
+      <p><strong>Carriage</strong><br>
+      Email: <strong>hello@carriagesg.com</strong><br>
+      Legal enquiries: <strong>legal@carriagesg.com</strong><br>
+      Singapore</p>
+    </div>
+    <p>We aim to respond to all enquiries within <strong>5 business days</strong>.</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Carriage.</div>
+  <ul class="footer-links">
+    <li><a href="carriage-landing.html">Home</a></li>
+    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+    <li><a href="terms-of-use.html">Terms of Use</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Carriage. Singapore. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
