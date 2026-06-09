@@ -487,6 +487,104 @@
     .cta-section { padding: 6rem 1.5rem; }
     .footer-inner { flex-direction: column; gap: 1rem; }
   }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(28,25,23,0.55);
+    backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+    padding: 1.5rem;
+    opacity: 0; transition: opacity 0.25s ease;
+  }
+  .modal-overlay.visible { opacity: 1; }
+  .modal-overlay.visible .modal-box { transform: translateY(0); opacity: 1; }
+
+  .modal-box {
+    background: var(--warm-white);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    width: 100%; max-width: 440px;
+    position: relative;
+    transform: translateY(20px); opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 24px 60px rgba(28,25,23,0.18);
+  }
+
+  .modal-close {
+    position: absolute; top: 1.1rem; right: 1.25rem;
+    background: none; border: none; cursor: pointer;
+    font-size: 1.6rem; line-height: 1; color: var(--text-muted);
+    padding: 0.2rem 0.4rem; border-radius: 4px;
+    transition: color 0.15s, background 0.15s;
+  }
+  .modal-close:hover { color: var(--bark); background: var(--sand-pale); }
+
+  .modal-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--violet-pale);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .modal-title {
+    font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+    color: var(--bark); margin-bottom: 0.5rem; line-height: 1.3;
+  }
+
+  .modal-subtitle {
+    color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+
+  .form-group {
+    display: flex; flex-direction: column; gap: 0.35rem;
+    margin-bottom: 1.1rem;
+  }
+  .form-group label {
+    font-size: 0.875rem; font-weight: 600; color: var(--text-primary);
+  }
+  .required { color: var(--terracotta); }
+  .optional { color: var(--text-muted); font-weight: 400; font-size: 0.82rem; }
+
+  .form-group input {
+    padding: 0.7rem 0.9rem;
+    border: 1.5px solid var(--sand);
+    border-radius: 0.6rem;
+    font-family: var(--font-body); font-size: 0.95rem;
+    background: #fff; color: var(--bark);
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-group input::placeholder { color: var(--sand); }
+  .form-group input:focus {
+    border-color: var(--violet);
+    box-shadow: 0 0 0 3px rgba(107,94,168,0.12);
+  }
+
+  .modal-submit {
+    width: 100%; padding: 0.85rem;
+    background: var(--amber); color: var(--bark);
+    border: none; border-radius: 999px;
+    font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+    cursor: pointer; margin-top: 0.5rem;
+    transition: background 0.2s, box-shadow 0.2s, opacity 0.2s;
+  }
+  .modal-submit:hover:not(:disabled) { background: #d4b23c; box-shadow: 0 4px 14px rgba(232,197,71,0.4); }
+  .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .modal-success {
+    flex-direction: column; align-items: center; text-align: center;
+    gap: 0.75rem; padding: 1.5rem 0 0.5rem;
+  }
+  .modal-success p {
+    font-size: 1rem; color: var(--sage); font-weight: 600;
+  }
+
+  @media (max-width: 480px) {
+    .modal-box { padding: 2rem 1.4rem; }
+    .modal-title { font-size: 1.2rem; }
+  }
 </style>
 </head>
 <body>
@@ -511,10 +609,10 @@
   <div class="hero-left">
     <h1>Support for the caregivers who support <em>everyone else</em></h1>
     <p class="hero-sub">You're always there for someone else. Carriage is always there for you. Get the support you need.</p>
-    <a href="#" class="hero-cta">
+    <button class="hero-cta" onclick="openWaitlistModal()">
       Speak to a Care Professional
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
+    </button>
   </div>
 
   <div class="hero-right">
@@ -672,6 +770,104 @@
     <p class="footer-copy">© 2026 Carriage. Singapore.</p>
   </div>
 </footer>
+
+<!-- WAITLIST MODAL -->
+<div id="waitlist-modal" class="modal-overlay" onclick="handleOverlayClick(event)" aria-modal="true" role="dialog" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeWaitlistModal()" aria-label="Close">&times;</button>
+    <div class="modal-icon">
+      <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="var(--violet)" stroke-width="1.8"><path d="M12 21C12 21 4 13.5 4 8.5a8 8 0 0116 0C20 13.5 12 21 12 21z"/><circle cx="12" cy="8.5" r="2.5"/></svg>
+    </div>
+    <h2 id="modal-title" class="modal-title">Carriage is coming soon</h2>
+    <p class="modal-subtitle">We're still in development. Leave your details and we'll reach out when we go live.</p>
+
+    <form id="waitlist-form" onsubmit="submitWaitlist(event)">
+      <div class="form-group">
+        <label for="wl-name">Name <span class="required">*</span></label>
+        <input type="text" id="wl-name" name="name" placeholder="Your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="wl-email">Email Address <span class="required">*</span></label>
+        <input type="email" id="wl-email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="wl-phone">Phone Number <span class="optional">(optional)</span></label>
+        <input type="tel" id="wl-phone" name="phone" placeholder="+65 9123 4567">
+      </div>
+      <button type="submit" class="modal-submit" id="modal-submit-btn">
+        <span id="submit-label">Notify me when you launch</span>
+        <span id="submit-spinner" style="display:none;">Sending…</span>
+      </button>
+    </form>
+
+    <div id="modal-success" class="modal-success" style="display:none;">
+      <svg width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="var(--sage)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <p>You're on the list! We'll be in touch soon.</p>
+    </div>
+  </div>
+</div>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init('OQbztw4sJ0YWk7UAy');
+
+  function openWaitlistModal() {
+    const modal = document.getElementById('waitlist-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => modal.classList.add('visible'), 10);
+  }
+
+  function closeWaitlistModal() {
+    const modal = document.getElementById('waitlist-modal');
+    modal.classList.remove('visible');
+    setTimeout(() => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+      document.getElementById('waitlist-form').style.display = 'block';
+      document.getElementById('modal-success').style.display = 'none';
+      document.getElementById('waitlist-form').reset();
+      document.getElementById('submit-label').style.display = '';
+      document.getElementById('submit-spinner').style.display = 'none';
+      document.getElementById('modal-submit-btn').disabled = false;
+    }, 250);
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('waitlist-modal')) closeWaitlistModal();
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeWaitlistModal();
+  });
+
+  async function submitWaitlist(e) {
+    e.preventDefault();
+    const btn = document.getElementById('modal-submit-btn');
+    document.getElementById('submit-label').style.display = 'none';
+    document.getElementById('submit-spinner').style.display = '';
+    btn.disabled = true;
+
+    const templateParams = {
+      name: document.getElementById('wl-name').value,
+      email: document.getElementById('wl-email').value,
+      phone: document.getElementById('wl-phone').value || 'Not provided',
+    };
+
+    try {
+      await emailjs.send('service_gi3x8h6', 'template_h53weoj', templateParams);
+      document.getElementById('waitlist-form').style.display = 'none';
+      document.getElementById('modal-success').style.display = 'flex';
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      document.getElementById('submit-label').style.display = '';
+      document.getElementById('submit-spinner').style.display = 'none';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again or email us at contact@carriagesg.live');
+    }
+  }
+</script>
 
 </body>
 </html>
